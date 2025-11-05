@@ -1,0 +1,114 @@
+---
+title: "Untitled"
+format: html
+---
+
+## Example from FMG
+Mike D was unable to recover the original code used to create the current FG hex graphics. The FG hexs must be recreated and documented here. The code below was copied from [FMG-hex](https://github.com/ForestManagementGeodatabase/FMG-hex)
+
+```{r}
+library(hexSticker)
+```
+
+```{r}
+library(showtext)
+## Loading Google fonts (http://www.google.com/fonts)
+font_add_google("Bebas Neue", "bebas")
+## Automatically use showtext to render text for future devices
+showtext_auto()
+```
+
+```{r extrafont, eval=FALSE, echo=FALSE}
+### `extrafont` doesn't work with `hexSticker` ####
+library(extrafont)
+# font_import()
+# loadfonts()
+# fonttable()
+
+# Register fonts for Windows bitmap output
+loadfonts(device="win")
+```
+
+```{r}
+forest_image <- "images/branches-countryside-daylight-environment-566496.jpg"
+
+filename <- "FMG_hexes/FMG-hex_1.png"
+
+fmg <- sticker(subplot = forest_image, 
+               s_x = 1,
+               s_y = 1,
+               s_width = 1.4,
+               package = "FMG",
+               p_x = 1,
+               p_y = 1,
+               p_color = "red4",
+               p_family = "Gadugi",
+               p_size = 50,
+               h_size = 3,
+               h_color = "darkolivegreen",
+               white_around_sticker = TRUE,
+               filename = filename)
+```
+
+```{r}
+forest_image <- "images/daylight-forest-nature-park-589802.jpg"
+
+filename <- "FMG_hexes/FMG-hex_2.png"
+
+fmg <- sticker(subplot = forest_image, 
+               s_x = 1,
+               s_y = 1,
+               s_width = 1.5,
+               package = "FMG",
+               p_x = 1,
+               p_y = 1,
+               p_color = "coral4",
+               p_family = "Gadugi",
+               p_size = 50,
+               h_size = 3,
+               h_color = "darkolivegreen",
+               white_around_sticker = TRUE,
+               filename = filename)
+```
+
+```{r}
+forest_image <- "images/worms-eyeview-of-green-trees-957024.jpg"
+
+filename <- "FMG_hexes/FMG-hex_3.png"
+
+fmg <- sticker(subplot = forest_image, 
+               s_x = 1,
+               s_y = 1,
+               s_width = 1.4,
+               package = "FMG",
+               p_x = 1,
+               p_y = 1,
+               p_color = "#78281F",
+               p_family = "bebas",
+               p_size = 60,
+               h_size = 4,
+               h_color = "#003300",
+               white_around_sticker = TRUE,
+               filename = filename)
+```
+
+```{r}
+forest_image <- "images/aerial-shot-of-forest-1650669.jpg"
+
+filename <- "FMG_hexes/FMG-hex_4.png"
+
+fmg <- sticker(subplot = forest_image, 
+               s_x = 1,
+               s_y = 1,
+               s_width = 1.4,
+               package = "FMG",
+               p_x = 1,
+               p_y = 1,
+               p_color = "saddlebrown",
+               p_family = "Gadugi",
+               p_size = 50,
+               h_size = 3,
+               h_color = "darkolivegreen",
+               white_around_sticker = TRUE,
+               filename = filename)
+```
