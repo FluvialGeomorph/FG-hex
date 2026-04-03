@@ -1,0 +1,53 @@
+---
+title: "OHWM-hex"
+format: html
+---
+
+
+
+## Example from FMG
+Mike D was unable to recover the original code used to create the current FG hex graphics. The FG hexs must be recreated and documented here. The code below was copied from [FMG-hex](https://github.com/ForestManagementGeodatabase/FMG-hex)
+
+```{r}
+library(hexSticker)
+library(magick)
+```
+
+```{r}
+library(showtext)
+## Loading Google fonts (http://www.google.com/fonts)
+sysfonts::font_add_google(name = "Ubuntu Condensed", family = "Ubuntu Condensed")
+## Automatically use showtext to render text for future devices
+showtext_auto()
+
+```{r}
+fg_ohwm_hex_image <- "images/ohwm_hex_image.png"
+
+filename <- "FG_hexes/fg-ohwm-hex_1.png"
+
+fg <- sticker(subplot = fg_ohwm_hex_image, 
+               s_x = 1,
+               s_y = 1,
+               s_width = 1.4,
+               package = "Ordinary Highwater Mark\nRAT",
+               p_x = 1,
+               p_y = .48,
+               lineheight = 0.3,
+               p_color = "bisque",
+               p_family = "Ubuntu Condensed",
+               p_size = 12,
+               h_size = 3,
+               h_color = "darkorange4",
+               white_around_sticker = TRUE,
+               filename = filename)
+
+fuzz <- 50
+p <- image_read(filename)
+pp <- p %>%
+  image_fill(color = "transparent", refcolor = "white", fuzz = fuzz, point = "+1+1") %>%
+  image_fill(color = "transparent", refcolor = "white", fuzz = fuzz, point = paste0("+", image_info(p)$width-1, "+1")) %>%
+  image_fill(color = "transparent", refcolor = "white", fuzz = fuzz, point = paste0("+1", "+", image_info(p)$height-1)) %>%
+  image_fill(color = "transparent", refcolor = "white", fuzz = fuzz, point = paste0("+", image_info(p)$width-1, "+", image_info(p)$height-1))
+image_write(image = pp, path = "FG_hexes/fg_ohwm_hex_image.png")
+file.show("fg_ohwm_hex_image.png")
+```

@@ -1,0 +1,48 @@
+---
+title: "fg_tb_hex"
+format: html
+---
+
+```{r}
+library(hexSticker)
+library(magick)
+```
+
+```{r}
+library(showtext)
+## Loading Google fonts (http://www.google.com/fonts)
+sysfonts::font_add_google(name = "Nanum Pen Script", family = "Nanum Pen Script")
+## Automatically use showtext to render text for future devices
+showtext_auto()
+
+```{r}
+fg_fgtb_hex<- "images/pexels-baskincreativeco-1480807.png"
+
+filename <- "FG_hexes/fg_fgtb-hex.png"
+
+fg <- sticker(subplot = fg_fgtb_hex, 
+               s_x = 1,
+               s_y = 1,
+               s_width = 1.4,
+               package = "FluvialGeomorph\nArcGIS Toolbox",
+               p_x = 1,
+               p_y = 1,
+               lineheight = .3,
+               p_color = "#4F9E99",
+               p_family = "Nanum Pen Script",
+               p_size = 12,
+               h_size = 3,
+               h_color = "#AA555A",
+               white_around_sticker = TRUE,
+               filename = filename)
+
+fuzz <- 50
+p <- image_read(filename)
+pp <- p %>%
+  image_fill(color = "transparent", refcolor = "white", fuzz = fuzz, point = "+1+1") %>%
+  image_fill(color = "transparent", refcolor = "white", fuzz = fuzz, point = paste0("+", image_info(p)$width-1, "+1")) %>%
+  image_fill(color = "transparent", refcolor = "white", fuzz = fuzz, point = paste0("+1", "+", image_info(p)$height-1)) %>%
+  image_fill(color = "transparent", refcolor = "white", fuzz = fuzz, point = paste0("+", image_info(p)$width-1, "+", image_info(p)$height-1))
+image_write(image = pp, path = "FG_hexes/fg_fgtb-hex.png")
+file.show("fg_fgtb-hex.png")
+```

@@ -1,0 +1,51 @@
+---
+title: "fc-cd-hex"
+format: html
+---
+```{r}
+library(hexSticker)
+library(magick)
+```
+
+```{r}
+library(showtext)
+## Loading Google fonts (http://www.google.com/fonts)
+sysfonts::font_add_google( "Gudea", "Gudea")
+## Automatically use showtext to render text for future devices
+showtext::showtext_auto()
+
+
+fc_cd_hex_image <- "images1/pexels-jakub-445047150-18252441.jpg"
+
+filename <- "FG_hexes/fc_cd-hex.png"
+
+fg <- sticker(subplot = fc_cd_hex_image, 
+               s_x = 1,
+               s_y = 1,
+               s_width = 1.4,
+               package = "Chute\nDesign\nRAT",
+               p_x = 0.47,
+               p_y = 1,
+               p_hjust = 0,
+               lineheight = 0.3,
+               p_color = "#A4230A",
+               
+               p_family = "Just Another Hand",
+               p_fontface = "bold",
+               p_size = 15,
+               h_size = 3,
+               h_color = "#2D5E99",
+               white_around_sticker = TRUE,
+               filename = filename)
+
+fuzz <- 30
+p <- image_read(filename)
+pp <- p %>%
+  image_fill(color = "transparent", refcolor = "white", fuzz = fuzz, point = "+1+1") %>%
+  image_fill(color = "transparent", refcolor = "white", fuzz = fuzz, point = paste0("+", image_info(p)$width-1, "+1")) %>%
+  image_fill(color = "transparent", refcolor = "white", fuzz = fuzz, point = paste0("+1", "+", image_info(p)$height-1)) %>%
+  image_fill(color = "transparent", refcolor = "white", fuzz = fuzz, point = paste0("+", image_info(p)$width-1, "+", image_info(p)$height-1))
+image_write(image = pp, path = "FG_hexes/fc_cd_hex_image.png")
+file.show("fc_cd_hex_image.png")
+
+```

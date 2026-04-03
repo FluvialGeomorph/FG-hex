@@ -1,0 +1,39 @@
+---
+title: "fg_gbe_hex"
+format: html
+---
+
+## Example from FMG
+Mike D was unable to recover the original code used to create the current FG hex graphics. The FG hexs must be recreated and documented here. The code below was copied from [FMG-hex](https://github.com/ForestManagementGeodatabase/FMG-hex)
+
+```{r}
+library(hexSticker)
+library(magick)
+```
+
+```{r}
+library(showtext)
+## Loading Google fonts (http://www.google.com/fonts)
+font_add_google("Gudea", "Gudea")
+## Automatically use showtext to render text for future devices
+showtext::showtext_auto()
+
+fg_gbe_image <- "images/pexels-pixabay-37607.png"
+
+filename <- "FG_hexes/fg_gbe_hex.png"
+
+fmg <- sticker(subplot = fg_gbe_image, 
+               s_x = 1,
+               s_y = 1,
+               s_width = 1.4,
+               package = "Geomorphic\nBalance\nEquation\nRAT",
+               p_x = 1,
+               p_y = 1,
+               p_color = "red4",
+               p_family = "Just Another Hand",
+               p_size = 50,
+               h_size = 3,
+               h_color = "darkolivegreen",
+               white_around_sticker = TRUE,
+               filename = filename)
+```

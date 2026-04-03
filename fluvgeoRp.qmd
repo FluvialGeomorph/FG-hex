@@ -1,0 +1,39 @@
+---
+title: "fluvgeoRp"
+format: html
+---
+
+```{r}
+library(hexSticker)
+library(magick)
+
+```
+
+```{r}
+library(showtext)
+## Loading Google fonts (http://www.google.com/fonts)
+sysfonts::font_add_google(name = "Just Another Hand", family = "Just Another Hand")
+## Automatically use showtext to render text for future devices
+showtext::showtext_auto()
+library(sysfonts)
+library(showtextdb)
+
+```
+
+```{r}
+
+fc_rat_hex_image <- "images/fluvgeo3.png"
+filename <- "FG_hexes/fluvgeo3.png" 
+               
+               
+fuzz <- 30
+p <- image_read(filename)
+pp <- p %>%
+  image_fill(color = "transparent", refcolor = "white", fuzz = fuzz, point = "+1+1") %>%
+  image_fill(color = "transparent", refcolor = "white", fuzz = fuzz, point = paste0("+", image_info(p)$width-1, "+1")) %>%
+  image_fill(color = "transparent", refcolor = "white", fuzz = fuzz, point = paste0("+1", "+", image_info(p)$height-1)) %>%
+  image_fill(color = "transparent", refcolor = "white", fuzz = fuzz, point = paste0("+", image_info(p)$width-1, "+", image_info(p)$height-1))
+image_write(image = pp, path = "FG_hexes/fluvgeo3.png")
+file.show("fluvgeo3.png")
+
+```
